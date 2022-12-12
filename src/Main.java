@@ -1,3 +1,4 @@
+import computer.MyComputer;
 import module.required.cooler.CpuCooler;
 import module.required.cooler.IntelBasicCpuCooler;
 import module.required.cpu.Cpu;
@@ -15,6 +16,9 @@ import module.required.vga.Vga;
 public class Main {
   public static void main(String[] args) throws Exception {
     B660M b660M = new B660M();
+    MyComputer myComputer = new MyComputer(b660M);
+
+
     Cpu cpu = new Intel12400();
     CpuCooler cpuCooler = new IntelBasicCpuCooler();
     Vga vga = new Rtx2070Super();
@@ -23,26 +27,48 @@ public class Main {
     Memory ram = new Ram();
 
 
-    b660M.pushCpu(cpu);
-    b660M.pushPower(power);
-    b660M.pushCpuCooler(cpuCooler);
-    b660M.pushCpuCooler(cpuCooler);
-    b660M.pushVga(vga);
-    b660M.pushRam(ram);
-    b660M.pushRam(ram);
-    b660M.pushRam(ram);
-    b660M.pushRam(ram);
-    b660M.pushRam(ram);
+    myComputer.pushCpu(cpu);
+    myComputer.pushCpu(cpu);
 
-    b660M.pushHdd(hdd);
-    b660M.pushHdd(hdd);
-    b660M.pushHdd(hdd);
-    b660M.pushHdd(hdd);
-    b660M.pushHdd(hdd);
-    b660M.pushHdd(hdd);
+    //TODO : 모든 ram이 같은 instance 인데도 들어가진다. 같은 instance는 못넣도록 검증하는 부분을 구현하자
+    myComputer.pushMemory(ram);
+    myComputer.pushMemory(ram);
+    myComputer.pushMemory(ram);
+    myComputer.pushMemory(ram);
+    myComputer.pushMemory(ram);
+
+    myComputer.pushHdd(hdd);
+    myComputer.pushHdd(hdd);
+
+    myComputer.pushVga(vga);
+    myComputer.pushVga(vga);
+
+    myComputer.pushCpuCooler(cpuCooler);
+    myComputer.pushCpuCooler(cpuCooler);
+
+    myComputer.pushPower(power);
+    myComputer.pushPower(power);
+//
+//    b660M.pushCpu(cpu);
+//    b660M.pushPower(power);
+//    b660M.pushCpuCooler(cpuCooler);
+//    b660M.pushCpuCooler(cpuCooler);
+//    b660M.pushVga(vga);
+//    b660M.pushRam(ram);
+//    b660M.pushRam(ram);
+//    b660M.pushRam(ram);
+//    b660M.pushRam(ram);
+//    b660M.pushRam(ram);
+//
+//    b660M.pushHdd(hdd);
+//    b660M.pushHdd(hdd);
+//    b660M.pushHdd(hdd);
+//    b660M.pushHdd(hdd);
+//    b660M.pushHdd(hdd);
+//    b660M.pushHdd(hdd);
 
 
 //    System.out.println("b660M.pushCpu(cpu) = " + b660M.pushCpu(cpu));
-    System.out.println("mainboard.toString() = " + b660M.toString());
+//    System.out.println("mainboard.toString() = " + b660M.toString());
   }
 }

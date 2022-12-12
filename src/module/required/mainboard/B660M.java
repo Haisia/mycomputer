@@ -20,7 +20,7 @@ import java.util.List;
 
 @Getter(AccessLevel.PUBLIC)
 @Setter
-public class B660M implements Mainboard {
+public class B660M implements Mainboard{
 
   private static final int UNLIMITED_SLOT = -1;
 
@@ -46,46 +46,60 @@ public class B660M implements Mainboard {
   private List<Ssd> ssd = new ArrayList<>();
   private List<Memory> memorys= new ArrayList<>();
 
+  @Override
   public Cpu pushCpu(Cpu cpu) throws Exception {
-    System.out.println("CPU를 장착합니다.");
     return MyUtils.pushModule(cpu, "cpu", this) ? getCpu() : null;
   }
 
+  @Override
   public Power pushPower(Power power) throws Exception {
-    System.out.println("Power를 장착합니다.");
     return MyUtils.pushModule(power, "power", this) ? getPower() : null;
   }
 
+  @Override
   public CpuCooler pushCpuCooler(CpuCooler cpuCooler) throws Exception {
-    System.out.println("CPU 쿨러를 장착합니다.");
     return MyUtils.pushModule(cpuCooler, "cpuCooler", this) ? getCpuCooler() : null;
   }
 
+  @Override
   public Vga pushVga(Vga vga) throws Exception {
-    System.out.println("VGA를 장착합니다.");
     return MyUtils.pushModule(vga, "vga", this) ? getVga() : null;
   }
 
+  @Override
   public List<Hdd> pushHdd(Hdd hdd) {
+    System.out.println("-------------------------------------------");
     System.out.println("하드디스크를 장착합니다.");
     getHdd().add(hdd);
+    System.out.println("하드디스크를 장착했습니다. " + "HDD : " + hdd);
+    System.out.println("-------------------------------------------");
     return getHdd();
   }
 
+  @Override
   public List<Ssd> pushSsd(Ssd ssd){
+    System.out.println("-------------------------------------------");
     System.out.println("SSD를 장착합니다.");
     getSsd().add(ssd);
+    System.out.println("SSD를 장착했습니다. " + "SSD : " + ssd);
+    System.out.println("-------------------------------------------");
     return getSsd();
   }
 
-  public List<Memory> pushRam(Memory memory){
-    System.out.println("RAM 장착합니다.");
+  @Override
+  public List<Memory> pushMemory(Memory memory){
+    System.out.println("-------------------------------------------");
+    System.out.println("Memory를 장착합니다.");
     if (getMemorys().size()<RAM_SLOT){
       getMemorys().add(memory);
+      System.out.println("Memory를 장착했습니다. " + "Memory : " + memory);
+      System.out.println("-------------------------------------------");
+      return getMemorys();
     } else {
       System.out.println("* 실패 : 램 소켓이 이미 가득 찼습니다.");
+      System.out.println("-------------------------------------------");
+      return null;
     }
-    return getMemorys();
   }
 
 

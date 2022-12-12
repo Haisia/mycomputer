@@ -20,12 +20,17 @@ public class MyUtils {
    */
   public static <T> boolean pushModule(T module, String fieldName, Module target) throws Exception {
     Field field = getField(fieldName, target);
+    System.out.println("-------------------------------------------");
+    System.out.println(fieldName+"를 장착합니다.");
 
     if (isPushModuleAble(field, target)) {
       field.set(target, module);
+      System.out.println(fieldName+"를 장착했습니다." + fieldName + " : " + module);
+      System.out.println("-------------------------------------------");
       return true;
     } else {
       System.out.println("* 실패 : 남은 슬롯이 부족합니다. 먼저 " + fieldName + "을(를) 제거해 주세요.");
+      System.out.println("-------------------------------------------");
       return false;
     }
   }
