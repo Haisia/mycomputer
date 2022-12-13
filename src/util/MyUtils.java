@@ -108,6 +108,7 @@ public class MyUtils {
   }
 
   public static void bootLoading(int BOOTING_GAUGE, double speed) throws InterruptedException {
+    long firstTime = System.currentTimeMillis();
     for (int i = 0; i <= BOOTING_GAUGE; i++) {
       for (int j = 0; j < i; j++) {
         System.out.print("■");
@@ -116,7 +117,11 @@ public class MyUtils {
         System.out.print("□");
       }
       System.out.println();
-      Thread.sleep((long) (1000/speed));
+      Thread.sleep((long) (500/speed));
     }
+    long secondTime = System.currentTimeMillis();
+    double difTime = (secondTime - firstTime) / (double)1000;
+    System.out.println(">> 소요시간 : "+difTime+" 초");
+    System.out.println("-------------------------------------------");
   }
 }
