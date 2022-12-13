@@ -20,6 +20,7 @@ public class Main {
 
 
     Cpu cpu = new Intel12400();
+    Cpu cpu2 = new Intel12400();
     CpuCooler cpuCooler = new IntelBasicCpuCooler();
     Vga vga = new Rtx2070Super();
     Hdd hdd = new Segate();
@@ -29,6 +30,7 @@ public class Main {
 
     myComputer.pushCpu(cpu);
     myComputer.popCpu(cpu);
+    myComputer.pushCpu(cpu2);
     myComputer.popCpu(cpu);
 
     myComputer.pushPower(power);
@@ -51,6 +53,13 @@ public class Main {
 
     myComputer.pushVga(vga);
     myComputer.pushVga(vga);
+
+    myComputer.pushCpuCooler(cpuCooler);
+    myComputer.pushPower(power);
+
+    myComputer.printSpec();
+
+    myComputer.turnOn();
 
   }
 }

@@ -9,7 +9,6 @@ import module.required.storage.Hdd;
 import module.required.storage.MDotTwo;
 import module.required.storage.Ssd;
 import module.required.vga.Vga;
-import util.MyUtils;
 
 import java.util.List;
 
@@ -28,15 +27,32 @@ public interface Mainboard extends Module {
 
   List<Memory> pushMemory(Memory memory);
 
-  public Cpu popCpu(Cpu cpu) throws Exception;
+  Cpu popCpu(Cpu cpu) throws Exception;
 
-  public Power popPower(Power power) throws Exception;
+  Power popPower(Power power) throws Exception;
 
-  public CpuCooler popCpuCooler(CpuCooler cpuCooler) throws Exception;
+  CpuCooler popCpuCooler(CpuCooler cpuCooler) throws Exception;
 
-  public Vga popVga(Vga vga) throws Exception;
+  Vga popVga(Vga vga) throws Exception;
 
-  public MDotTwo popMDotTwo(MDotTwo mDotTwo) throws Exception;
+  MDotTwo popMDotTwo(MDotTwo mDotTwo) throws Exception;
+
   @Override
   String toString();
+
+  Cpu getCpu();
+
+  Power getPower();
+
+  CpuCooler getCpuCooler();
+
+  Vga getVga();
+
+  MDotTwo getMDotTwo();
+
+  List<Hdd> getHdd();
+
+  List<Ssd> getSsd();
+
+  List<Memory> getMemorys();
 }

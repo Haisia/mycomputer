@@ -9,14 +9,71 @@ import module.required.storage.Hdd;
 import module.required.storage.MDotTwo;
 import module.required.storage.Ssd;
 import module.required.vga.Vga;
-import util.MyUtils;
 
 import java.util.List;
 
-//todo : 컴퓨터 스펙 출력하는 메서드 구현해보자
+// todo : 컴퓨터가 부팅 가능한 상태인지 (조립이 온전한지 ) 확인하는 메서드 구현 및 부팅시 검증
+// todo : 컴퓨터 사양에 따른 부팅속도, 작업속도 도출 및 적용
+// todo : 연산기능 구현
 public class MyComputer implements Computer {
-  private final Mainboard mainboard;
+  private Mainboard mainboard;
+  private Boolean isTurnOn = false;
 
+
+  public Boolean isTurnOn() {
+    return isTurnOn;
+  }
+
+  public void setIsTurnOn(Boolean turnOn) {
+    isTurnOn = turnOn;
+  }
+
+  public void turnOn() {
+
+    if (isTurnOn){
+      System.out.println("컴퓨터를 재부팅합니다. ");
+      return;
+    }
+
+    if(isBootingAble()) {
+      System.out.println("컴퓨터를 부팅합니다. ");
+      setIsTurnOn(true);
+    }else {
+      System.out.println("조립완료후 재시도 해 주세요. ");
+    }
+  }
+
+  public void turnOff(){
+    if (isTurnOn()){
+      System.out.println("컴퓨터를 종료합니다. ");
+    }else {
+      System.out.println("컴퓨터가 이미 꺼져있습니다. ");
+    }
+    setIsTurnOn(false);
+  }
+
+  public void printSpec(){
+    System.out.println(mainboard.toString());
+  }
+
+  /**
+   * 컴퓨터가 부팅 가능한 상태인지 검사합니다.
+   * @return 부팅 가능 여부 True / False
+   */
+  public boolean isBootingAble(){
+    // cpu, power cpuCooler, vga, memory 가 최소 1개이상 존재해야 하고,
+    // storage (hdd, ssd, m.2) 가 총 1개이상 존재해야 한다.
+
+    return mainboard.getCpu() != null &&
+            mainboard.getPower() != null &&
+            mainboard.getCpuCooler() != null &&
+            mainboard.getVga() != null &&
+            mainboard.getMemorys().size() > 0 &&
+            (mainboard.getMDotTwo() != null || mainboard.getHdd().size() > 0 || mainboard.getSsd().size() > 0);
+  }
+
+
+  // ------------------------- 조립관련 시작 -------------------------------
   public MyComputer(Mainboard mainboard) {
     this.mainboard = mainboard;
   }
@@ -39,7 +96,6 @@ public class MyComputer implements Computer {
 
   public List<Hdd> pushHdd(Hdd hdd) {
     return mainboard.pushHdd(hdd);
-
   }
 
   public List<Ssd> pushSsd(Ssd ssd) {
@@ -67,5 +123,9 @@ public class MyComputer implements Computer {
   public MDotTwo popMDotTwo(MDotTwo mDotTwo) throws Exception {
     return mainboard.popMDotTwo(mDotTwo);
   }
+
+  // ------------------------- 조립관련 끝 -------------------------------
+
+
 
 }

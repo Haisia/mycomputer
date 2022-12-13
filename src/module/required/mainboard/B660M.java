@@ -16,7 +16,7 @@ import util.MyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-
+// TODO : List 들 pop 기능 구현해야 함.
 @Getter(AccessLevel.PUBLIC)
 @Setter
 public class B660M implements Mainboard{
@@ -101,19 +101,24 @@ public class B660M implements Mainboard{
     }
   }
 
+  @Override
   public Cpu popCpu(Cpu cpu) throws Exception {
     return MyUtils.popModule(cpu, "cpu", this) ? cpu : null;
   }
 
+  @Override
   public Power popPower(Power power) throws Exception {
     return MyUtils.popModule(power, "power", this) ? power : null;
   }
+  @Override
   public CpuCooler popCpuCooler(CpuCooler cpuCooler) throws Exception {
     return MyUtils.popModule(cpuCooler, "cpuCooler", this) ? cpuCooler : null;
   }
+  @Override
   public Vga popVga(Vga vga) throws Exception {
     return MyUtils.popModule(vga, "vga", this) ? vga : null;
   }
+  @Override
   public MDotTwo popMDotTwo(MDotTwo mDotTwo) throws Exception {
     return MyUtils.popModule(mDotTwo, "mDotTwo", this) ? mDotTwo : null;
   }
