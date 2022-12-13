@@ -8,7 +8,6 @@ import module.required.memory.Memory;
 import module.required.power.Power;
 import module.required.vga.Vga;
 import module.required.cooler.CpuCooler;
-import module.required.memory.Ram;
 import module.required.storage.Hdd;
 import module.required.storage.MDotTwo;
 import module.required.storage.Ssd;
@@ -96,11 +95,30 @@ public class B660M implements Mainboard{
       System.out.println("-------------------------------------------");
       return getMemorys();
     } else {
-      System.out.println("* 실패 : 램 소켓이 이미 가득 찼습니다.");
+      System.out.println("* ERROR : 램 소켓이 이미 가득 찼습니다.");
       System.out.println("-------------------------------------------");
       return null;
     }
   }
+
+  public Cpu popCpu(Cpu cpu) throws Exception {
+    return MyUtils.popModule(cpu, "cpu", this) ? cpu : null;
+  }
+
+  public Power popPower(Power power) throws Exception {
+    return MyUtils.popModule(power, "power", this) ? power : null;
+  }
+  public CpuCooler popCpuCooler(CpuCooler cpuCooler) throws Exception {
+    return MyUtils.popModule(cpuCooler, "cpuCooler", this) ? cpuCooler : null;
+  }
+  public Vga popVga(Vga vga) throws Exception {
+    return MyUtils.popModule(vga, "vga", this) ? vga : null;
+  }
+  public MDotTwo popMDotTwo(MDotTwo mDotTwo) throws Exception {
+    return MyUtils.popModule(mDotTwo, "mDotTwo", this) ? mDotTwo : null;
+  }
+
+
 
 
   @Override

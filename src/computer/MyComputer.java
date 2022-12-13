@@ -6,6 +6,7 @@ import module.required.mainboard.Mainboard;
 import module.required.memory.Memory;
 import module.required.power.Power;
 import module.required.storage.Hdd;
+import module.required.storage.MDotTwo;
 import module.required.storage.Ssd;
 import module.required.vga.Vga;
 import util.MyUtils;
@@ -47,6 +48,24 @@ public class MyComputer implements Computer {
 
   public List<Memory> pushMemory(Memory memory) {
     return mainboard.pushMemory(memory);
+  }
+
+  public Cpu popCpu(Cpu cpu) throws Exception {
+    return mainboard.popCpu(cpu);
+  }
+
+  public Power popPower(Power power) throws Exception {
+    return mainboard.popPower(power);
+  }
+
+  public CpuCooler popCpuCooler(CpuCooler cpuCooler) throws Exception {
+    return mainboard.popCpuCooler(cpuCooler);
+  }
+  public Vga popVga(Vga vga) throws Exception {
+    return mainboard.popVga(vga);
+  }
+  public MDotTwo popMDotTwo(MDotTwo mDotTwo) throws Exception {
+    return mainboard.popMDotTwo(mDotTwo);
   }
 
 }

@@ -28,7 +28,16 @@ public class Main {
 
 
     myComputer.pushCpu(cpu);
-    myComputer.pushCpu(cpu);
+    myComputer.popCpu(cpu);
+    myComputer.popCpu(cpu);
+
+    myComputer.pushPower(power);
+    myComputer.popPower(power);
+    myComputer.popPower(power);
+
+    myComputer.pushCpuCooler(cpuCooler);
+    myComputer.popCpuCooler(cpuCooler);
+    myComputer.popCpuCooler(cpuCooler);
 
     //TODO : 모든 ram이 같은 instance 인데도 들어가진다. 같은 instance는 못넣도록 검증하는 부분을 구현하자
     myComputer.pushMemory(ram);
@@ -43,32 +52,5 @@ public class Main {
     myComputer.pushVga(vga);
     myComputer.pushVga(vga);
 
-    myComputer.pushCpuCooler(cpuCooler);
-    myComputer.pushCpuCooler(cpuCooler);
-
-    myComputer.pushPower(power);
-    myComputer.pushPower(power);
-//
-//    b660M.pushCpu(cpu);
-//    b660M.pushPower(power);
-//    b660M.pushCpuCooler(cpuCooler);
-//    b660M.pushCpuCooler(cpuCooler);
-//    b660M.pushVga(vga);
-//    b660M.pushRam(ram);
-//    b660M.pushRam(ram);
-//    b660M.pushRam(ram);
-//    b660M.pushRam(ram);
-//    b660M.pushRam(ram);
-//
-//    b660M.pushHdd(hdd);
-//    b660M.pushHdd(hdd);
-//    b660M.pushHdd(hdd);
-//    b660M.pushHdd(hdd);
-//    b660M.pushHdd(hdd);
-//    b660M.pushHdd(hdd);
-
-
-//    System.out.println("b660M.pushCpu(cpu) = " + b660M.pushCpu(cpu));
-//    System.out.println("mainboard.toString() = " + b660M.toString());
   }
 }
