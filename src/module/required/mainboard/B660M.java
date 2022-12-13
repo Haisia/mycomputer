@@ -16,11 +16,11 @@ import util.MyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO : List 들 pop 기능 구현해야 함.
 @Getter(AccessLevel.PUBLIC)
 @Setter
 public class B660M implements Mainboard{
 
+  private static final double BENCH_SCORE = 0.9;
   private static final int UNLIMITED_SLOT = -1;
 
   private static final int CPU_SLOT = 1;
@@ -123,8 +123,28 @@ public class B660M implements Mainboard{
     return MyUtils.popModule(mDotTwo, "mDotTwo", this) ? mDotTwo : null;
   }
 
+  public List<Hdd> popHdd(int index){
+    if (getHdd().size()<=index || index<0){
+      System.out.println("올바른 Index 를 입력하세요. ");
+      return null;
+    }
+    getHdd().remove(index);
+    return getHdd();
+  }
+
+  public List<Ssd> popSsd(int index){
+    if (getSsd().size()<=index || index<0){
+      System.out.println("올바른 Index 를 입력하세요. ");
+      return null;
+    }
+    getSsd().remove(index);
+    return getSsd();
+  }
 
 
+  public double getBENCH_SCORE() {
+    return BENCH_SCORE;
+  }
 
   @Override
   public String toString() {

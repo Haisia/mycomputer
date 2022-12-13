@@ -60,6 +60,9 @@ public class Main {
     myComputer.printSpec();
 
     myComputer.turnOn();
+    myComputer.turnOn();
+    myComputer.turnOff();
+    myComputer.turnOff();
 
   }
 }

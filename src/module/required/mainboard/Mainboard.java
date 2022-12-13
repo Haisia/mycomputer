@@ -13,6 +13,8 @@ import module.required.vga.Vga;
 import java.util.List;
 
 public interface Mainboard extends Module {
+  double BENCH_SCORE = 0.3;
+
   Cpu pushCpu(Cpu cpu) throws Exception;
 
   Power pushPower(Power power) throws Exception;
@@ -55,4 +57,7 @@ public interface Mainboard extends Module {
   List<Ssd> getSsd();
 
   List<Memory> getMemorys();
+
+  public double getBENCH_SCORE();
+
 }

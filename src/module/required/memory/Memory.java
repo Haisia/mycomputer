@@ -3,6 +3,7 @@ package module.required.memory;
 import module.Module;
 
 public interface Memory extends Module {
+  double BENCH_SCORE = 0.3;
 
   // 연산에 필요한 값 SET, GET
   public void setValue(Long value1, Long value2);
@@ -14,4 +15,7 @@ public interface Memory extends Module {
 
   // 메모리 비우기
   public void clearMemory();
+
+  public double getBENCH_SCORE();
+
 }

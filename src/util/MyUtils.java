@@ -1,8 +1,11 @@
 package util;
 
 import module.Module;
+import module.required.memory.Memory;
+import module.required.memory.Ram;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 public class MyUtils {
   public static boolean isNullCheck(Object object) {
@@ -96,4 +99,24 @@ public class MyUtils {
     return field.get(target);
   }
 
+  public static double findLowestBenchScoreOfMemorys(List<Memory> Memorys){
+    double LowestBenchScore = 1;
+    for (Memory memory : Memorys) {
+      LowestBenchScore = Math.min(memory.getBENCH_SCORE(), LowestBenchScore);
+    }
+    return LowestBenchScore;
+  }
+
+  public static void bootLoading(int BOOTING_GAUGE, double speed) throws InterruptedException {
+    for (int i = 0; i <= BOOTING_GAUGE; i++) {
+      for (int j = 0; j < i; j++) {
+        System.out.print("■");
+      }
+      for (int k = 0; k < BOOTING_GAUGE - i; k++) {
+        System.out.print("□");
+      }
+      System.out.println();
+      Thread.sleep((long) (1000/speed));
+    }
+  }
 }
